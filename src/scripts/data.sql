@@ -1,0 +1,104 @@
+DELETE FROM Rated;
+DELETE FROM Muser;
+DELETE FROM Acted;
+DELETE FROM Belongs;
+DELETE FROM Movie;
+DELETE FROM Director;
+DELETE FROM Actor;
+DELETE FROM Genre;
+
+INSERT INTO Genre VALUES('Horror');
+INSERT INTO Genre VALUES('Comedy');
+INSERT INTO Genre VALUES('Romance');
+INSERT INTO Genre VALUES('Action');
+INSERT INTO Genre VALUES('Thriller');
+
+INSERT INTO Actor VALUES(1, 'Cara Delevingne');
+INSERT INTO Actor VALUES(2, 'Will Smith');
+INSERT INTO Actor VALUES(3, 'Mark Ruffalo');
+INSERT INTO Actor VALUES(4, 'Margot Robbie');
+INSERT INTO Actor VALUES(5, 'Amber Heard');
+INSERT INTO Actor VALUES(6, 'Leonardo DiCaprio');
+INSERT INTO Actor VALUES(7, 'Ben Affleck');
+INSERT INTO Actor VALUES(8, 'Jason Momoa');
+INSERT INTO Actor VALUES(9, 'Gal Gadot');
+INSERT INTO Actor VALUES(10, 'Scarlett Johansson');
+INSERT INTO Actor VALUES(11, 'Chris Hemsworth');
+INSERT INTO Actor VALUES(12, 'Robert Downey Jr');
+INSERT INTO Actor VALUES(13, 'Chris Evans');
+INSERT INTO Actor VALUES(14, 'Gwyneth Paltrow');
+INSERT INTO Actor VALUES(15, 'Michael B Jordan');
+INSERT INTO Actor VALUES(16, 'Lupita Nyongo');
+INSERT INTO Actor VALUES(17, 'Chadwick Boseman');
+INSERT INTO Actor VALUES(18, 'Samuel L Jackson');
+INSERT INTO Actor VALUES(19, 'Amy Adams');
+INSERT INTO Actor VALUES(20, 'Henry Cavill');
+
+INSERT INTO Director VALUES(1, 'Joss Whedon');
+INSERT INTO Director VALUES(2, 'James Wan');
+INSERT INTO Director VALUES(3, 'Zack Snyder');
+INSERT INTO Director VALUES(4, 'Patty Jenkins');
+INSERT INTO Director VALUES(5, 'Luc Besson');
+INSERT INTO Director VALUES(6, 'Ryan Coogler');
+INSERT INTO Director VALUES(7, 'Jordan Peele');
+INSERT INTO Director VALUES(8, 'Christopher Nolan');
+INSERT INTO Director VALUES(9, 'James Cameron');
+INSERT INTO Director VALUES(10, 'David Ayer');
+
+INSERT INTO Movie VALUES(1, 'Avengers', 'A bunch of heroes', to_date('2012-01-01', 'yyyy-mm-dd'), 1);
+INSERT INTO Movie VALUES(2, 'Aquaman', 'fish fight', to_date('2018-01-01', 'yyyy-mm-dd'), 2);
+INSERT INTO Movie VALUES(3, 'Dawn of justice','Teri ma meri ma martha', to_date('2018-05-21', 'yyyy-mm-dd'), 3);
+INSERT INTO Movie VALUES(4, 'Wonder Woman', 'Feminism on point', to_date('2018-07-11', 'yyyy-mm-dd'), 4);
+INSERT INTO Movie VALUES(5, 'Lucy', 'Mental Girl', to_date('2016-01-01', 'yyyy-mm-dd'), 5);
+INSERT INTO Movie VALUES(6, 'Black Panther', 'Africans', to_date('2018-11-01', 'yyyy-mm-dd'), 6);
+INSERT INTO Movie VALUES(7, 'Us', 'Scary Africans', to_date('2018-01-01', 'yyyy-mm-dd'), 7);
+INSERT INTO Movie VALUES(8, 'Inception', 'You will not get it', to_date('2015-01-01', 'yyyy-mm-dd'), 8);
+INSERT INTO Movie VALUES(9, 'Titanic', 'And you call bollywood cheesy', to_date('2008-01-01', 'yyyy-mm-dd'), 9);
+INSERT INTO Movie VALUES(10, 'Suicide Squad', 'Harley Quinn', to_date('2017-08-13', 'yyyy-mm-dd'), 10);
+
+INSERT INTO Belongs VALUES(1, 'Action');
+INSERT INTO Belongs VALUES(2, 'Action');
+INSERT INTO Belongs VALUES(3, 'Action');
+INSERT INTO Belongs VALUES(4, 'Action');
+INSERT INTO Belongs VALUES(5, 'Thriller');
+INSERT INTO Belongs VALUES(6, 'Action');
+INSERT INTO Belongs VALUES(7, 'Horror');
+INSERT INTO Belongs VALUES(8, 'Thriller');
+INSERT INTO Belongs VALUES(9, 'Romance');
+INSERT INTO Belongs VALUES(10, 'Action');
+
+INSERT INTO Acted VALUES(1, 12);
+INSERT INTO Acted VALUES(1, 11);
+INSERT INTO Acted VALUES(1, 13);
+INSERT INTO Acted VALUES(2, 8);
+INSERT INTO Acted VALUES(2, 5);
+INSERT INTO Acted VALUES(3, 20);
+INSERT INTO Acted VALUES(3, 7);
+INSERT INTO Acted VALUES(3, 9);
+INSERT INTO Acted VALUES(1, 18);
+INSERT INTO Acted VALUES(1, 3);
+INSERT INTO Acted VALUES(4, 9);
+INSERT INTO Acted VALUES(5, 10);
+INSERT INTO Acted VALUES(6, 16);
+INSERT INTO Acted VALUES(6, 17);
+INSERT INTO Acted VALUES(6, 15);
+INSERT INTO Acted VALUES(7, 16);
+INSERT INTO Acted VALUES(8, 6);
+INSERT INTO Acted VALUES(9, 6);
+INSERT INTO Acted VALUES(1, 14);
+INSERT INTO Acted VALUES(10, 1);
+INSERT INTO Acted VALUES(10, 2);
+INSERT INTO Acted VALUES(10, 4);
+
+
+INSERT INTO MUser VALUES('mukund', 'god', 1);
+INSERT INTO MUser VALUES('steve', 'ferrero', 1);
+INSERT INTO MUser VALUES('jadu', 'returnme', 0);
+INSERT INTO MUser VALUES('padu', 'takeme', 0);
+
+INSERT INTO Rated VALUES('mukund', 1, 9.7);
+INSERT INTO Rated VALUES('steve', 4, 8.4);
+INSERT INTO Rated VALUES('jadu', 7, 2.5);
+INSERT INTO Rated VALUES('mukund', 5, 7);
+INSERT INTO Rated VALUES('padu', 9, 9);
+INSERT INTO Rated VALUES('steve', 6, 8);
