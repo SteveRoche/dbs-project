@@ -9,21 +9,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
 import movies.Database;
 
 public class RegisterScreen extends JPanel {
 	public static final String location = "REGISTER";
-//	private final int pad = 10;
+	private final int pad = 10;
 
-//	SpringLayout layout = new SpringLayout();
-	GroupLayout layout = new GroupLayout(this);
+	SpringLayout layout = new SpringLayout();
 
 	JLabel lblUsername = new JLabel("Username");
 	JLabel lblPassword = new JLabel("Password");
@@ -116,65 +115,51 @@ public class RegisterScreen extends JPanel {
 	}
 
 	private void buildUI() {
-//		add(lblUsername);
-//		add(tfUsername);
-//
-//		add(lblPassword);
-//		add(pfPassword);
-//
-//		add(lblConfirm);
-//		add(pfConfirm);
-//
-//		add(lblMessage);
-//		add(btnRegister);
-//		add(btnLogin);
-
 		setLayout(layout);
-		layout.setAutoCreateGaps(true);
-		layout.setAutoCreateContainerGaps(true);
+		add(lblUsername);
+		add(tfUsername);
 
-		layout.setHorizontalGroup(layout.createParallelGroup()
-				.addGroup(layout.createSequentialGroup().addComponent(lblUsername).addComponent(tfUsername))
-				.addGroup(layout.createSequentialGroup().addComponent(lblPassword).addComponent(pfPassword))
-				.addGroup(layout.createSequentialGroup().addComponent(lblConfirm).addComponent(pfConfirm)));
+		add(lblPassword);
+		add(pfPassword);
 
-		layout.setVerticalGroup(layout.createParallelGroup()
-				.addGroup(layout.createSequentialGroup().addComponent(lblUsername).addComponent(lblPassword)
-						.addComponent(lblConfirm))
-				.addGroup(layout.createSequentialGroup().addComponent(tfUsername).addComponent(pfPassword)
-						.addComponent(pfConfirm)));
+		add(lblConfirm);
+		add(pfConfirm);
+
+		add(lblMessage);
+		add(btnRegister);
+		add(btnLogin);
 
 		// Labels horizontal
-//		layout.putConstraint(SpringLayout.WEST, lblUsername, pad, SpringLayout.WEST, this);
-//		layout.putConstraint(SpringLayout.WEST, lblPassword, pad, SpringLayout.WEST, this);
-//		layout.putConstraint(SpringLayout.WEST, lblConfirm, pad, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, lblUsername, pad, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, lblPassword, pad, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.WEST, lblConfirm, pad, SpringLayout.WEST, this);
 //
 //		// Labels vertical
-//		layout.putConstraint(SpringLayout.NORTH, lblUsername, pad, SpringLayout.NORTH, this);
-//		layout.putConstraint(SpringLayout.NORTH, lblPassword, pad, SpringLayout.SOUTH, lblUsername);
-//		layout.putConstraint(SpringLayout.NORTH, lblConfirm, pad, SpringLayout.SOUTH, lblPassword);
+		layout.putConstraint(SpringLayout.NORTH, lblUsername, pad, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.NORTH, lblPassword, pad, SpringLayout.SOUTH, lblUsername);
+		layout.putConstraint(SpringLayout.NORTH, lblConfirm, pad, SpringLayout.SOUTH, lblPassword);
 //
 //		// Inputs vertical
-//		layout.putConstraint(SpringLayout.BASELINE, tfUsername, 0, SpringLayout.BASELINE, lblUsername);
-//		layout.putConstraint(SpringLayout.BASELINE, pfPassword, 0, SpringLayout.BASELINE, lblPassword);
-//		layout.putConstraint(SpringLayout.BASELINE, pfConfirm, 0, SpringLayout.BASELINE, lblConfirm);
+		layout.putConstraint(SpringLayout.BASELINE, tfUsername, 0, SpringLayout.BASELINE, lblUsername);
+		layout.putConstraint(SpringLayout.BASELINE, pfPassword, 0, SpringLayout.BASELINE, lblPassword);
+		layout.putConstraint(SpringLayout.BASELINE, pfConfirm, 0, SpringLayout.BASELINE, lblConfirm);
 //
 //		// Inputs horizontal
-//		layout.putConstraint(SpringLayout.WEST, pfConfirm, pad, SpringLayout.EAST, lblConfirm);
-//		layout.putConstraint(SpringLayout.EAST, tfUsername, 0, SpringLayout.EAST, pfConfirm);
-//		layout.putConstraint(SpringLayout.EAST, pfPassword, 0, SpringLayout.EAST, pfConfirm);
+		layout.putConstraint(SpringLayout.WEST, pfConfirm, pad, SpringLayout.EAST, lblConfirm);
+		layout.putConstraint(SpringLayout.EAST, tfUsername, 0, SpringLayout.EAST, pfConfirm);
+		layout.putConstraint(SpringLayout.EAST, pfPassword, 0, SpringLayout.EAST, pfConfirm);
 //
 //		// Message
-//		layout.putConstraint(SpringLayout.WEST, lblMessage, pad, SpringLayout.WEST, this);
-//		layout.putConstraint(SpringLayout.NORTH, lblMessage, pad, SpringLayout.SOUTH, lblConfirm);
+		layout.putConstraint(SpringLayout.WEST, lblMessage, pad, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.NORTH, lblMessage, pad, SpringLayout.SOUTH, lblConfirm);
 //
 //		// Back to login button
-//		layout.putConstraint(SpringLayout.WEST, btnLogin, pad, SpringLayout.WEST, this);
-//		layout.putConstraint(SpringLayout.NORTH, btnLogin, pad, SpringLayout.SOUTH, lblMessage);
+		layout.putConstraint(SpringLayout.WEST, btnLogin, pad, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.NORTH, btnLogin, pad, SpringLayout.SOUTH, lblMessage);
 //
 //		// Register button
-//		layout.putConstraint(SpringLayout.NORTH, btnRegister, pad, SpringLayout.SOUTH, lblMessage);
-//		layout.putConstraint(SpringLayout.EAST, btnRegister, 0, SpringLayout.EAST, pfConfirm);
+		layout.putConstraint(SpringLayout.NORTH, btnRegister, pad, SpringLayout.SOUTH, lblMessage);
+		layout.putConstraint(SpringLayout.EAST, btnRegister, 0, SpringLayout.EAST, pfConfirm);
 		setVisible(true);
 	}
 

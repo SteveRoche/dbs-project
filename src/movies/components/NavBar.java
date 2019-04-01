@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
@@ -30,7 +29,6 @@ public class NavBar extends JPanel implements SessionObserver {
 			public void actionPerformed(ActionEvent e) {
 				Container frame = getParent().getParent();
 				((CardLayout) frame.getLayout()).show(frame, LoginScreen.location);
-				((JFrame) frame).pack();
 				Session.clear();
 			}
 		});
