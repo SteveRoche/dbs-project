@@ -29,7 +29,7 @@ public class NavBar extends JPanel implements SessionObserver {
 			public void actionPerformed(ActionEvent e) {
 				Container frame = getParent().getParent();
 				((CardLayout) frame.getLayout()).show(frame, LoginScreen.location);
-				Session.clear();
+				Session.logout();
 			}
 		});
 	}

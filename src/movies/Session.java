@@ -14,7 +14,7 @@ public class Session {
 		loggedIn = true;
 	}
 
-	public static void init(String username) {
+	public static void login(String username) {
 		if (instance == null) {
 			instance = new Session(username);
 		}
@@ -26,7 +26,7 @@ public class Session {
 		notifyAllObservers();
 	}
 
-	public static void clear() {
+	public static void logout() {
 		if (loggedIn) {
 			Session.username = null;
 			Session.loggedIn = false;

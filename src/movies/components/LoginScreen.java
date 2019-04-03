@@ -74,7 +74,7 @@ public class LoginScreen extends JPanel {
 				}
 
 				if (validUsername && validPassword) {
-					Session.init(username);
+					Session.login(username);
 					redirect(Dashboard.location);
 					resetForm();
 				}
