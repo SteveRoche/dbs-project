@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,8 +22,6 @@ public class Search extends JPanel {
 	SpringLayout layout = new SpringLayout();
 	JTextField tfSearch = new JTextField(15);
 	JButton btnSearch = new JButton("Search");
-	JButton btnVis = new JButton("Toggle");
-	JTextField tfVis = new JTextField(15);
 
 	PreparedStatement stmtSearch, stmtAll;
 
@@ -47,13 +47,6 @@ public class Search extends JPanel {
 			}
 		});
 
-		btnVis.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				tfVis.setVisible(!tfVis.isVisible());
-			}
-		});
-
 		buildUI();
 	}
 
@@ -61,20 +54,11 @@ public class Search extends JPanel {
 //		setLayout(layout);
 		add(tfSearch);
 		add(btnSearch);
-		add(btnVis);
-		add(tfVis);
-		tfVis.setVisible(false);
 
 		layout.putConstraint(SpringLayout.WEST, tfSearch, pad, SpringLayout.WEST, this);
 
 		layout.putConstraint(SpringLayout.WEST, btnSearch, 0, SpringLayout.EAST, tfSearch);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, btnSearch, 0, SpringLayout.VERTICAL_CENTER, tfSearch);
-
-		layout.putConstraint(SpringLayout.NORTH, btnVis, 10, SpringLayout.SOUTH, tfSearch);
-		layout.putConstraint(SpringLayout.WEST, btnVis, 0, SpringLayout.SOUTH, tfSearch);
-
-		layout.putConstraint(SpringLayout.NORTH, tfVis, 50, SpringLayout.SOUTH, tfSearch);
-		layout.putConstraint(SpringLayout.WEST, tfVis, 0, SpringLayout.SOUTH, tfSearch);
 
 		setVisible(true);
 	}
@@ -83,4 +67,11 @@ public class Search extends JPanel {
 	public Dimension getPreferredSize() {
 		return new Dimension(500, 430);
 	}
+}
+
+class Movie {
+	public String name;
+	public Date releaseDate;
+	public String director;
+	public ArrayList<String> actors;
 }
