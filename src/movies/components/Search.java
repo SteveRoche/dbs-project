@@ -3,47 +3,40 @@ package movies.components;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import movies.Database;
+import movies.models.Movie;
 
 public class Search extends JPanel {
 	private static final int pad = 10;
 
 	SpringLayout layout = new SpringLayout();
+	JPanel moviesContainer = new JPanel();
 	JTextField tfSearch = new JTextField(15);
 	JButton btnSearch = new JButton("Search");
-
-	PreparedStatement stmtSearch, stmtAll;
+	JScrollPane sp = new JScrollPane(moviesContainer);
 
 	Search() {
-
-		try {
-			stmtSearch = Database.conn().prepareStatement("SELECT name FROM Movie WHERE LOWER(name) LIKE LOWER(?)");
-			stmtAll = Database.conn().prepareStatement("SELECT name FROM Movie");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Movie.all().stream().forEachOrdered(m -> {
+			moviesContainer.add(new MoviePanel(m));
+		});
 
 		btnSearch.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				try {
-					String query = tfSearch.getText();
-					stmtSearch.setString(1, "%" + query + "%");
-					ResultSet rs = stmtSearch.executeQuery();
-				} catch (SQLException e) {
-					// TODO: Proper error handling
-				}
+				String query = tfSearch.getText();
+				moviesContainer.removeAll();
+				Movie.search(query).stream().forEachOrdered(m -> {
+					moviesContainer.add(new MoviePanel(m));
+				});
+				moviesContainer.revalidate();
+				moviesContainer.repaint();
 			}
 		});
 
@@ -51,27 +44,30 @@ public class Search extends JPanel {
 	}
 
 	private void buildUI() {
-//		setLayout(layout);
+		setLayout(layout);
 		add(tfSearch);
 		add(btnSearch);
+		add(sp);
+		moviesContainer.setLayout(new BoxLayout(moviesContainer, BoxLayout.PAGE_AXIS));
+		sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
+		layout.putConstraint(SpringLayout.NORTH, tfSearch, pad, SpringLayout.NORTH, this);
 		layout.putConstraint(SpringLayout.WEST, tfSearch, pad, SpringLayout.WEST, this);
 
+		layout.putConstraint(SpringLayout.BASELINE, btnSearch, 0, SpringLayout.BASELINE, tfSearch);
 		layout.putConstraint(SpringLayout.WEST, btnSearch, 0, SpringLayout.EAST, tfSearch);
-		layout.putConstraint(SpringLayout.VERTICAL_CENTER, btnSearch, 0, SpringLayout.VERTICAL_CENTER, tfSearch);
+
+		layout.putConstraint(SpringLayout.NORTH, sp, pad, SpringLayout.SOUTH, tfSearch);
+		layout.putConstraint(SpringLayout.EAST, sp, -pad, SpringLayout.EAST, this);
+		layout.putConstraint(SpringLayout.SOUTH, sp, -pad, SpringLayout.SOUTH, this);
+		layout.putConstraint(SpringLayout.WEST, sp, pad, SpringLayout.WEST, this);
 
 		setVisible(true);
+		sp.setVisible(true);
 	}
 
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(500, 430);
 	}
-}
-
-class Movie {
-	public String name;
-	public Date releaseDate;
-	public String director;
-	public ArrayList<String> actors;
 }

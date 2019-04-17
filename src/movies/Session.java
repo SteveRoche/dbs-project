@@ -7,6 +7,7 @@ public class Session {
 	private static Session instance;
 	private static String username;
 	private static boolean loggedIn;
+	private static Integer currentMovie;
 	private static List<SessionObserver> observers = new ArrayList<SessionObserver>();
 
 	private Session(String username) {
@@ -22,6 +23,7 @@ public class Session {
 		if (!loggedIn) {
 			Session.username = username;
 			Session.loggedIn = true;
+			Session.currentMovie = null;
 		}
 		notifyAllObservers();
 	}
@@ -30,6 +32,7 @@ public class Session {
 		if (loggedIn) {
 			Session.username = null;
 			Session.loggedIn = false;
+			Session.currentMovie = null;
 		}
 		notifyAllObservers();
 	}
@@ -44,6 +47,15 @@ public class Session {
 
 	public static void attach(SessionObserver observer) {
 		observers.add(observer);
+	}
+
+	public static void setCurrentMovie(int id) {
+		currentMovie = id;
+		notifyAllObservers();
+	}
+
+	public static Integer getCurrentMovie() {
+		return currentMovie;
 	}
 
 	public static void notifyAllObservers() {

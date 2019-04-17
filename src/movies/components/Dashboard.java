@@ -14,11 +14,15 @@ public class Dashboard extends JPanel {
 	NavBar navbar = new NavBar();
 	JTabbedPane tabs = new JTabbedPane();
 	Search search = new Search();
+	DetailsTab details = new DetailsTab();
+	RecommendTab recommend = new RecommendTab();
 
 	Dashboard() {
 		add(navbar);
 		add(tabs);
 		tabs.addTab("Search", search);
+		tabs.addTab("Details", details);
+		tabs.addTab("Recommendations", recommend);
 	}
 
 	@Override
